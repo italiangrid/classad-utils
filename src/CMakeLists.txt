@@ -20,7 +20,7 @@
 set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall")
 
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(CLASSAD emi-classad-ns)
+pkg_check_modules(CLASSAD REQUIRED emi-classad-ns)
 
 if( ${CMAKE_VERSION} VERSION_LESS "2.8.2" )
     if( IS_DIRECTORY "/usr/lib64" )
