@@ -1,7 +1,7 @@
 Summary: C/C++ libraries for ClassAd handling
 Name: glite-wms-utils-classad
 Version: @PKGVERSION@
-Release: @PKGRELEASE@
+Release: @PKGRELEASE@%{?dist}%{!?dist:.el5}
 License: Apache Software License
 Vendor: EMI
 URL: http://glite.cern.ch/
