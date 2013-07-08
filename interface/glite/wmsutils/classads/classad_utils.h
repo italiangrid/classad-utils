@@ -172,6 +172,24 @@ T EvaluateExpr(classad::ClassAd& ad, const std::string& what)
   return t;
 }
   
+template<class T>
+classad::ExprList* asExprList(const std::vector<T>& v)
+{
+  std::vector< classad::ExprTree* >          list;
+
+  typename std::vector<T>::const_iterator it = v.begin();
+  typename std::vector<T>::const_iterator const end = v.end();
+  for ( ; it != end; ++it) {
+    classad::Value value;
+    setValue(value, (*it));
+    list.push_back(classad::Literal::MakeLiteral(value));
+  }
+    
+  classad::ExprList* result = classad::ExprList::MakeExprList(list);
+    
+  return result;
+}
+  
 template<class T> 
 bool InsertAttrList(classad::ClassAd& ad, const std::string& what, const std::vector<T>&l)
 {
@@ -193,24 +211,6 @@ inline std::string asString(classad::ClassAd& ad)
 
   return s;
 } 
-  
-template<class T>
-classad::ExprList* asExprList(const std::vector<T>& v)
-{
-  std::vector< classad::ExprTree* >          list;
-
-  typename std::vector<T>::const_iterator it = v.begin();
-  typename std::vector<T>::const_iterator const end = v.end();
-  for ( ; it != end; ++it) {
-    classad::Value value;
-    setValue(value, (*it));
-    list.push_back(classad::Literal::MakeLiteral(value));
-  }
-    
-  classad::ExprList* result = classad::ExprList::MakeExprList(list);
-    
-  return result;
-}
   
 typedef std::list<classad::ExprTree*> expression_trace_type;
 typedef std::pair<expression_trace_type*, classad::AttributeReference*> predicate_context_type;
