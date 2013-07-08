@@ -1,11 +1,11 @@
-prefix=@prefix@
+prefix=@CMAKE_INSTALL_PREFIX@/usr
 exec_prefix=${prefix}
 libdir=${prefix}/@LIBSUBDIR@
 includedir=${prefix}/include
 
 Name: classad utils
 Description: Classad utilities
-Version: @VERSION@
+Version: @PKGVER@
 Libs: -L${libdir} -lglite_wmsutils_classads
 Cflags: -I${includedir}
 
