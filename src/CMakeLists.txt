@@ -43,6 +43,10 @@ include_directories(${CLASSAD_INCLUDE_DIRS}
 
 add_definitions( -pipe -DWANT_NAMESPACES -DWANT_CLASSAD_NAMESPACE )
 
+if( NOT CLASSAD_VERSION VERSION_LESS "8.2.0" )
+    add_definitions( -std=c++11 )
+endif( NOT CLASSAD_VERSION VERSION_LESS "8.2.0" )
+
 add_library(glite_wmsutils_classads SHARED classad_utils.cpp)
 
 set_target_properties(glite_wmsutils_classads PROPERTIES VERSION 0.0.0 SOVERSION 0)

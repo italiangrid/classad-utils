@@ -193,7 +193,7 @@ classad::ExprList* asExprList(const std::vector<T>& v)
 template<class T> 
 bool InsertAttrList(classad::ClassAd& ad, const std::string& what, const std::vector<T>&l)
 {
-  classad::ExprList* expr_list = asExprList(l);
+  classad::ExprTree* expr_list = asExprList(l);
     
   if( !expr_list ) return false;
     
