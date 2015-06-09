@@ -7,7 +7,7 @@ Vendor: EMI
 URL: http://glite.cern.ch/
 Group: System Environment/Libraries
 BuildArch: %{_arch}
-BuildRequires: cmake, pkgconfig, emi-pkgconfig-compat, classads-devel
+BuildRequires: cmake, classads-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 AutoReqProv: yes
 Source: %{name}.tar.gz
@@ -63,6 +63,9 @@ C/C++ libraries for ClassAd handling (development files)
 /usr/include/glite/wmsutils/classads/classad_utils.h
 %{_libdir}/libglite_wmsutils_classads.so
 %{_libdir}/pkgconfig/classad-utils.pc
+/usr/share/cmake/Modules/Find*.cmake
+
+
 
 %changelog
 * Fri Aug 31 2012 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@

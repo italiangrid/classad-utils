@@ -19,8 +19,7 @@
 
 set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall")
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(CLASSAD REQUIRED emi-classad-ns)
+find_package(GLiteClassAd REQUIRED)
 
 if( ${CMAKE_VERSION} VERSION_LESS "2.8.2" )
     if( IS_DIRECTORY "/usr/lib64" )
@@ -36,16 +35,12 @@ else( ${CMAKE_VERSION} VERSION_LESS "2.8.2" )
     endif( IS_DIRECTORY "/usr/lib64" AND NOT IS_SYMLINK "/usr/lib64" )
 endif( ${CMAKE_VERSION} VERSION_LESS "2.8.2" )
 
-link_directories(${CLASSAD_LIBRARY_DIRS})
+link_directories(${ClassAd_LIBRARY})
 
-include_directories(${CLASSAD_INCLUDE_DIRS}
+include_directories(${ClassAd_INCLUDE_DIR}
                     ${PROJECT_SOURCE_DIR}/interface)
 
-add_definitions( -pipe -DWANT_NAMESPACES -DWANT_CLASSAD_NAMESPACE )
-
-if( NOT CLASSAD_VERSION VERSION_LESS "8.2.0" )
-    add_definitions( -std=c++11 )
-endif( NOT CLASSAD_VERSION VERSION_LESS "8.2.0" )
+add_definitions( ${ClassAd_CXX_FLAGS} ${ClassAd_CPP_FLAGS} )
 
 add_library(glite_wmsutils_classads SHARED classad_utils.cpp)
 
