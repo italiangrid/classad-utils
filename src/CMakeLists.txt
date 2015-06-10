@@ -46,7 +46,7 @@ add_library(glite_wmsutils_classads SHARED classad_utils.cpp)
 
 set_target_properties(glite_wmsutils_classads PROPERTIES VERSION 0.0.0 SOVERSION 0)
 
-target_link_libraries(glite_wmsutils_classads ${CLASSAD_LIBRARIES})
+target_link_libraries(glite_wmsutils_classads ${ClassAd_LIBRARY})
 
 install(TARGETS glite_wmsutils_classads
         LIBRARY DESTINATION usr/${LIBSUBDIR})
