@@ -7,7 +7,16 @@ Vendor: EMI
 URL: http://glite.cern.ch/
 Group: System Environment/Libraries
 BuildArch: %{_arch}
-BuildRequires: cmake, classads-devel
+BuildRequires: cmake
+%if 0%{?el5}
+BuildRequires: classads-devel
+%else
+%if 0%{?el6}
+BuildRequires: classads-devel
+%else
+BuildRequires: condor-classads-devel
+%endif
+%endif
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 AutoReqProv: yes
 Source: %{name}.tar.gz
@@ -50,7 +59,16 @@ rm -rf %{buildroot}
 Summary: C/C++ libraries for ClassAd handling (development files)
 Group: System Environment/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
+%if 0%{?el5}
 Requires: classads-devel
+%else
+%if 0%{?el6}
+Requires: classads-devel
+%else
+Requires: condor-classads-devel
+%endif
+%endif
+
 
 %description devel
 C/C++ libraries for ClassAd handling (development files)
